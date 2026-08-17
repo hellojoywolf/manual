@@ -1,0 +1,556 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chord Kaleidoscope User Manual</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 25mm 20mm;
+            background-color: #fafbfc;
+            @bottom-right {
+                content: counter(page);
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+                font-size: 9pt;
+                color: #888;
+            }
+        }
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            color: #2c3e50;
+            line-height: 1.5;
+            font-size: 10pt;
+            margin: 0;
+            padding: 0;
+            background-color: #fafbfc;
+        }
+
+
+        header {
+            margin: -25mm -20mm 20px -20mm;
+            padding: 30mm 32mm 15mm 32mm;
+            background-color: #2c3e50;
+            color: #ffffff;
+            border-bottom: 4px solid #3498db;
+        }
+
+        .document-content {
+            padding-left: 12mm;
+            padding-right: 12mm;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 26pt;
+            font-weight: 300;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 12pt;
+            color: #bdc3c7;
+            margin-top: 8px;
+            font-weight: 400;
+        }
+
+        h2 {
+            font-size: 16pt;
+            color: #2c3e50;
+            margin-top: 2em;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #dcdde1;
+            page-break-after: avoid;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 12pt;
+            color: #34495e;
+            margin-top: 1.5em;
+            page-break-after: avoid;
+            font-weight: 600;
+        }
+
+        p {
+            margin: 0.8em 0;
+        }
+
+        ul, ol {
+            margin: 0.8em 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 0.4em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5em 0;
+            font-size: 9pt;
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            page-break-inside: auto;
+        }
+        
+        tr {
+            page-break-inside: avoid;
+            page-break-after: auto;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 10px 12px;
+            border: 1px solid #ecf0f1;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: #f4f6f7;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .diagram {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            background: #ffffff;
+            border: 1px solid #e1e8ed;
+            padding: 12px;
+            margin: 1em 0;
+            page-break-inside: avoid;
+            font-size: 9pt;
+            color: #34495e;
+            border-radius: 4px;
+            white-space: pre;
+        }
+
+        .callout {
+            background-color: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 12px 16px;
+            margin: 1em 0;
+            page-break-inside: avoid;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .callout p {
+            margin: 0;
+            font-size: 9.5pt;
+        }
+
+        .math {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            background-color: #f1f2f6;
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+        
+        .chord-flow {
+            text-align: center;
+            font-weight: bold;
+            color: #e67e22;
+            margin: 1.5em 0;
+            font-size: 11pt;
+            page-break-inside: avoid;
+            background-color: #fff;
+            padding: 15px;
+            border: 1px dashed #dcdde1;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CHORD KALEIDOSCOPE</h1>
+        <div class="subtitle">Official User Manual &amp; Reference Guide</div>
+        <div style="margin-top: 15px; font-size: 9pt; color: #a4b0be;">
+            Version: 1.0<br>
+            Format: Max for Live MIDI Device<br>
+            Compatibility: Ableton Live 10, 11, or 12 (Suite, or Standard with Max for Live)
+        </div>
+    </header>
+
+    <main class="document-content">
+    <h2>1. Overview &amp; Core Concept</h2>
+    <p><strong>Chord Kaleidoscope</strong> is a generative harmony instrument for Ableton Live that transforms melodic input into dynamic, real-time harmonic accompaniment through intelligent scale tracking and adaptive chord generation.</p>
+    <p>At high speeds, its adaptive chord-generation capabilities can also be used to create unique sound textures and rapid-fire melodies when applied to monophonic instruments.</p>
+
+    <h2>2. Installation &amp; Routing</h2>
+    
+    <h3>Installation</h3>
+    <p>Drag the <code>Chord Kaleidoscope.amxd</code> file into:<br>
+    <strong>User Library &gt; Presets &gt; MIDI Effects &gt; Max MIDI Effect</strong></p>
+
+    <h3>Basic Track Setup</h3>
+    <p>Place Chord Kaleidoscope on a MIDI track before your software instrument (VST, AU, or native device) to hear the generated chords.</p>
+
+    <h3>Playing Along with Generated Chords</h3>
+    <p>Because Chord Kaleidoscope replaces incoming MIDI notes with generated chords, a single track cannot output both simultaneously when using software instruments. To hear both your raw playing and the generated chords, configure two tracks:</p>
+    <ul>
+        <li><strong>Track 1:</strong> Instrument only (plays your direct keyboard input).</li>
+        <li><strong>Track 2:</strong> Chord Kaleidoscope + Instrument. Set its <em>MIDI From</em> to Track 1 and set <em>Monitor</em> to <strong>In</strong>.</li>
+    </ul>
+    <div class="callout">
+        <p><strong>Note:</strong> If you are triggering hardware via the External Instrument device, a single track can successfully handle both signals.</p>
+    </div>
+
+    <h3>Recording the Generated MIDI</h3>
+    <p>To capture the generated chords as a MIDI clip:</p>
+    <ol>
+        <li>Create a second MIDI track (Track 2).</li>
+        <li>Set Track 2's <em>MIDI From</em> to the track containing Chord Kaleidoscope, and select <strong>Chord Kaleidoscope</strong> in the lower routing dropdown.</li>
+        <li>Arm Track 2 and press Record.</li>
+    </ol>
+
+    <h2>3. Interface Reference</h2>
+    <p>The interface is structured into five functional zones: <em>Harmonic Display &amp; Scale Tracking, Generate Modes, Chord Shapes &amp; Voicings, Chord Memory,</em> and <em>Global Output Controls.</em></p>
+
+    <h3>3.1 Harmonic Display &amp; Scale Detection</h3>
+    <p>The main circular visualization displays the 12 chromatic pitches across three color-coded concentric rings.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Parameter / Element</th>
+                <th>Type</th>
+                <th>Function</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Accidental Toggle (b / #)</strong></td>
+                <td>Button</td>
+                <td>Toggles the UI display between flat (b) and sharp (#) note spellings.</td>
+            </tr>
+            <tr>
+                <td><strong>Tracked (Blue Ring)</strong></td>
+                <td>Display</td>
+                <td>Shows notes captured by smart scale detection based on your recent playing.</td>
+            </tr>
+            <tr>
+                <td><strong>Scale (Green Ring)</strong></td>
+                <td>Display</td>
+                <td>A dynamic subset of the Tracked pitch collection, re-randomized on chord generation unless locked.</td>
+            </tr>
+            <tr>
+                <td><strong>Chord (Orange Ring)</strong></td>
+                <td>Display</td>
+                <td>The active generated output chord, formed from a subset of the Scale layer.</td>
+            </tr>
+            <tr>
+                <td><strong>Note-Tracking</strong></td>
+                <td>Switch</td>
+                <td>Toggle 'Off' to lock the current harmonic pool so incoming MIDI notes do not overwrite the tracked scale.</td>
+            </tr>
+            <tr>
+                <td><strong>Reset</strong></td>
+                <td>Button</td>
+                <td>Instantly clears all currently tracked MIDI notes.</td>
+            </tr>
+            <tr>
+                <td><strong>Scale Type</strong></td>
+                <td>Dropdown</td>
+                <td>Sets the number of notes (e.g., 5-note, 7-note) that form each generated Scale.</td>
+            </tr>
+            <tr>
+                <td><strong>Lock Scale</strong></td>
+                <td>Switch</td>
+                <td>When set to 'On', freezes the current Scale selection, preventing re-randomization on subsequent chord generations.</td>
+            </tr>
+            <tr>
+                <td><strong>New Chord</strong></td>
+                <td>Button</td>
+                <td>Manually triggers the immediate generation of a new chord.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>3.2 Generate Modes</h3>
+    <p>Chord Kaleidoscope features three operational trigger modes to control when new chords are produced.</p>
+
+    <ul>
+        <li><strong>1. On-Demand Mode:</strong> New chords generate strictly when the 'New Chord' button is pressed.</li>
+        <li><strong>2. Time-Interval Mode:</strong> Generates rapid-fire or rhythmically timed chords based on time intervals.
+            <ul>
+                <li><em>Rate Knob:</em> Controls interval speed (up to 20 Hz).</li>
+                <li><em>Hz / Sync Toggle:</em> Switches rate calculation between continuous Hertz (Hz) or tempo-synced subdivision values (Sync) tied to Ableton Live. (Note: Ableton's transport must be actively running for synchronization to work).</li>
+                <li><em>Constant / Reactive Toggle:</em> 
+                    <strong>Constant</strong> generates chords continuously at the set rate regardless of input. 
+                    <strong>Reactive</strong> waits for incoming MIDI notes, then generates a chord on the next rate cycle.
+                </li>
+            </ul>
+        </li>
+        <li><strong>3. Note-Count Mode:</strong> Real-time harmonic accompaniment triggered by incoming MIDI note activity.
+            <ul>
+                <li><em>Threshold Value:</em> Defines the count of detected MIDI notes needed to trigger a new chord.</li>
+                <li><em>Fixed / Variable Toggle:</em>
+                    <strong>Fixed</strong> requires the exact specified total number of MIDI notes to be detected before triggering the next chord.
+                    <strong>Variable</strong> triggers a new chord when <em>up to</em> the specified maximum number of MIDI notes are detected.
+                </li>
+            </ul>
+        </li>
+    </ul>
+
+    <h3>3.3 Chord Shapes &amp; Chord Voicings</h3>
+    <p>Once a Scale is defined, Chord Kaleidoscope applies structural rules using Chord Shapes and Chord Voicings to select and arrange final output notes.</p>
+
+    <h4>Chord Shapes Matrix</h4>
+    <p>During each generation cycle, the device randomly picks one active property from the Chord Shapes matrix:</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Note Category</th>
+                <th>Available Chord Shapes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>2-Note</strong></td>
+                <td>2nd, 3rd, 4th, 5th, 6th, 7th</td>
+            </tr>
+            <tr>
+                <td><strong>3-Note</strong></td>
+                <td>Triad, Sus2, Sus4, Quartal, Cluster 1, Cluster 2</td>
+            </tr>
+            <tr>
+                <td><strong>4-Note</strong></td>
+                <td>Triad+2, Triad+4, 7th, 7thSus4, Special 1, Special 2</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="callout">
+        <p><strong>Note:</strong> Certain Chord Shapes are conditionally selectable depending on the selected Scale Type. For example, you cannot generate a 6th interval on a scale that only contains 5 notes.</p>
+    </div>
+
+    <h4>Chord Voicings</h4>
+    <p>Voicings shift notes around the selected Chord Shape. On each chord generation, the engine randomly selects one active Inversion and one active Drop Voicing:</p>
+    <ul>
+        <li><strong>Inversions (Left Side):</strong> Root, 1st Inv, 2nd Inv, 3rd Inv</li>
+        <li><strong>Drop Voicings (Right Side):</strong> No Drop, Drop 2, Drop 3</li>
+    </ul>
+
+    <h3>3.4 Chord Memory</h3>
+    <p>View the last 5 chords generated, or enable 'Lock Chords' to jam out with them.</p>
+    <ul>
+        <li><strong>History Tracking:</strong> Automatically stores the last 5 generated chords when Lock Chords is set to Off.</li>
+        <li><strong>Lock Chords Toggle:</strong> Set to On to freeze the 5 current chords into memory.</li>
+        <li><strong>Slot Buttons (1&ndash;5):</strong> Re-trigger the stored chord in that memory slot on demand during live performance.</li>
+        <li><strong>Add Spread Checkbox:</strong> When enabled, applies active Chord Voicings (inversions/drop rules) to stored chords when re-triggered from memory slots.</li>
+    </ul>
+
+    <h3>3.5 Global Output Controls</h3>
+    <ul>
+        <li><strong>Chord Velocity:</strong> Sets uniform MIDI velocity output (range: 1&ndash;127) for every note of a generated chord.</li>
+        <li><strong>Octave Adjust (-2, -1, 0, 1, 2):</strong> Transposes output pitch up or down by octaves relative to the center pitch.</li>
+        <li><strong>Octave Range (1 / 2):</strong> Selects whether generated chords remain strictly in the selected 'Octave Adjust' boundary (1), or whether they also have the chance of alternatively being placed in the octave boundary directly above (2).</li>
+    </ul>
+
+    <h2>4. How Chord Generation Works</h2>
+    <p>Chord Kaleidoscope generates each chord through a sequence of four stages: Root Selection, Chord Shape Selection, Chord Voicing, and Output Adjustment.</p>
+
+    <div class="chord-flow">
+        Current Scale &rarr; Random Root Selection &rarr; Chord Shape Selection &rarr; Chord Voicing &rarr; Output Controls &rarr; Final MIDI Chord
+    </div>
+
+    <h3>4.1 Root Selection</h3>
+    <p>When a new chord is generated, Chord Kaleidoscope first selects a random scale degree from the currently active Scale. This note becomes the root of the generated chord.</p>
+    <p>For example, if the current Scale is C Major (<span class="math">C D E F G A B</span>) and <strong>E</strong> is randomly selected as the root, all subsequent Chord Shape calculations begin from E.</p>
+    <p>The selected root does not necessarily determine the final lowest note of the chord. Chord Voicings and Output Controls are applied later and may move individual notes into different octaves.</p>
+
+    <h3>4.2 Chord Shape Selection</h3>
+    <p>After selecting a root, the device randomly selects one active Chord Shape from the matrix.</p>
+    <p>Chord Shapes determine which scale degrees are included relative to the root. They do not use fixed semitone intervals. Instead, they move through the notes of the current Scale.</p>
+    
+    <p>For example, the <strong>Triad</strong> shape uses the scale-degree pattern: <strong>1 &ndash; 3 &ndash; 5</strong><br>
+    The randomly selected root is always treated as position 1.</p>
+
+    <div class="diagram"><strong>Using a C Major Scale:</strong>
+C &ndash; D &ndash; E &ndash; F &ndash; G &ndash; A &ndash; B
+
+<strong>Building a Triad from Root C:</strong>
+Scale Degrees:   1      2      3      4      5
+Scale Notes:     C     (D)     E     (F)     G
+Result:          <strong>C &ndash; E &ndash; G</strong>
+
+<strong>Building a Triad from Root D:</strong>
+Scale Degrees:   1      2      3      4      5
+Scale Notes:     D     (E)     F     (G)     A
+Result:          <strong>D &ndash; F &ndash; A</strong></div>
+
+    <p>This means that the same Chord Shape can produce different harmonic structures depending on the selected Scale and Root.</p>
+
+    <h3>4.3 Scale-Degree Patterns</h3>
+    <p>Each Chord Shape has its own scale-degree pattern. The following table describes the patterns used by Chord Kaleidoscope.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Chord Shape</th>
+                <th>Pattern</th>
+                <th>Chord Shape</th>
+                <th>Pattern</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>2nd</td><td>1 &ndash; 2</td><td>Cluster 1</td><td>1 &ndash; 2 &ndash; 3</td></tr>
+            <tr><td>3rd</td><td>1 &ndash; 3</td><td>Cluster 2</td><td>1 &ndash; 3 &ndash; 4</td></tr>
+            <tr><td>4th</td><td>1 &ndash; 4</td><td>Cluster 3</td><td>1 &ndash; 2 &ndash; 4</td></tr>
+            <tr><td>5th</td><td>1 &ndash; 5</td><td>Triad + 2</td><td>1 &ndash; 2 &ndash; 3 &ndash; 5</td></tr>
+            <tr><td>6th</td><td>1 &ndash; 6</td><td>Triad + 4</td><td>1 &ndash; 3 &ndash; 4 &ndash; 5</td></tr>
+            <tr><td>7th</td><td>1 &ndash; 7</td><td>7th</td><td>1 &ndash; 3 &ndash; 5 &ndash; 7</td></tr>
+            <tr><td>Triad</td><td>1 &ndash; 3 &ndash; 5</td><td>7th Sus4</td><td>1 &ndash; 4 &ndash; 5 &ndash; 7</td></tr>
+            <tr><td>Sus2</td><td>1 &ndash; 2 &ndash; 5</td><td>Special 1</td><td>1 &ndash; 3 &ndash; 5 &ndash; 8</td></tr>
+            <tr><td>Sus4</td><td>1 &ndash; 4 &ndash; 5</td><td>Special 2</td><td>1 &ndash; 3 &ndash; 6 &ndash; 8</td></tr>
+            <tr><td>Quartal</td><td>1 &ndash; 4 &ndash; 7</td><td></td><td></td></tr>
+        </tbody>
+    </table>
+    <p>For example, the Triad + 2 shape uses the pattern <span class="math">1 &ndash; 2 &ndash; 3 &ndash; 5</span>. Starting from C in C Major produces <span class="math">C &ndash; D &ndash; E &ndash; G</span>. Starting from E produces <span class="math">E &ndash; F &ndash; G &ndash; B</span>.</p>
+
+    <h3>4.4 Chord Voicing</h3>
+    <p>After the Chord Shape determines which notes belong to the chord, active Chord Voicing rules are applied. Chord Voicings change the octave placement of the notes without altering the selected scale degrees.</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Chord Size</th>
+                <th>Inversion</th>
+                <th>Octave Shift</th>
+                <th>Drop Voicing</th>
+                <th>Octave Shift</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="2"><strong>2-Note</strong></td>
+                <td>Root</td>
+                <td>0, 0</td>
+                <td>No Drop</td>
+                <td>0, 0</td>
+            </tr>
+            <tr>
+                <td>1st Inversion</td>
+                <td>+12, 0</td>
+                <td>Drop 2</td>
+                <td>-12, 0</td>
+            </tr>
+            <tr>
+                <td rowspan="3"><strong>3-Note</strong></td>
+                <td>Root</td>
+                <td>0, 0, 0</td>
+                <td>No Drop</td>
+                <td>0, 0, 0</td>
+            </tr>
+            <tr>
+                <td>1st Inversion</td>
+                <td>+12, 0, 0</td>
+                <td>Drop 2</td>
+                <td>0, -12, 0</td>
+            </tr>
+            <tr>
+                <td>2nd Inversion</td>
+                <td>+12, +12, 0</td>
+                <td>&mdash;</td>
+                <td>&mdash;</td>
+            </tr>
+            <tr>
+                <td rowspan="4"><strong>4-Note</strong></td>
+                <td>Root</td>
+                <td>0, 0, 0, 0</td>
+                <td>No Drop</td>
+                <td>0, 0, 0, 0</td>
+            </tr>
+            <tr>
+                <td>1st Inversion</td>
+                <td>+12, 0, 0, 0</td>
+                <td>Drop 2</td>
+                <td>0, 0, -12, 0</td>
+            </tr>
+            <tr>
+                <td>2nd Inversion</td>
+                <td>+12, +12, 0, 0</td>
+                <td>Drop 3</td>
+                <td>0, -12, 0, 0</td>
+            </tr>
+            <tr>
+                <td>3rd Inversion</td>
+                <td>+12, +12, +12, 0</td>
+                <td>&mdash;</td>
+                <td>&mdash;</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <p><strong>Inversions</strong> shift the lowest notes of the chord up by one full octave (+12 semitones), changing the order of the pitches.</p>
+
+    <div class="diagram"><strong>For a three-note chord (e.g., C Major):</strong>
+Root Position: C &ndash; E &ndash; G (no shift)
+1st Inversion: E &ndash; G &ndash; C(+1 octave)
+2nd Inversion: G &ndash; C(+1 octave) &ndash; E(+1 octave)</div>
+
+    <p><strong>Drop Voicings</strong> lower specific notes by one octave after the chord shape and inversion have been determined. For example, a three-note chord using Drop 2 changes from <span class="math">C &ndash; E &ndash; G</span> to <span class="math">C &ndash; E' &ndash; G</span>, where the designated note is moved down one octave relative to the other tones.</p>
+
+    <h3>4.5 Final Output</h3>
+    <p>After Root Selection, Chord Shape, and Chord Voicing have been applied, the generated notes are passed through the Global Output Controls (Chord Velocity, Octave Range, and Octave Adjust) before being sent as final MIDI.</p>
+
+    <h3>4.6 Example: Complete Chord Generation</h3>
+    <p>Suppose the current Scale is <strong>C Major</strong> (<code>C &ndash; D &ndash; E &ndash; F &ndash; G &ndash; A &ndash; B</code>):</p>
+
+    <ol>
+        <li><strong>Root Selection:</strong> The device randomly selects <strong>E</strong> as the root.</li>
+        <li><strong>Shape Selection:</strong> The device randomly selects the <strong>Triad + 2</strong> shape. Its scale-degree pattern is <code>1 &ndash; 2 &ndash; 3 &ndash; 5</code>.</li>
+        <li><strong>Shape Application:</strong> Starting from E, applying this pattern pulls the following notes from the scale:<br>
+        <code>E &ndash; F &ndash; G &ndash; B</code></li>
+        <li><strong>Inversion Application:</strong> The device randomly selects a <strong>1st Inversion</strong>. This takes the lowest note (E) and raises it by one octave, shifting it to the top of the chord.<br>
+        <em>Result:</em> <code>F &ndash; G &ndash; B &ndash; E(+12)</code></li>
+        <li><strong>Drop Voicing Application:</strong> A <strong>Drop 2</strong> voicing is randomly selected. This rule isolates the <em>second-highest</em> note in the current stack (which is B) and drops it down by one octave, moving it to the bottom of the chord.<br>
+        <em>Final Result:</em> <code>B(-12) &ndash; F &ndash; G &ndash; E(+12)</code></li>
+    </ol>
+    <p>The resulting notes are passed through the Global Output Controls before being output as MIDI. By separating harmonic content (Chord Shapes) from physical arrangement (Chord Voicings), the device
+    ensures that while the specific octaves and inversions may vary, the underlying harmonic structure remains logically tied to your active scale and selected parameters.</p>
+
+    <h2>5. Troubleshooting &amp; FAQ</h2>
+    
+    <p><strong>Q: Why are some Chord Shapes grayed out or unselectable?</strong><br>
+    A: Certain 3-note or 4-note Chord Shapes require a higher note count in the selected scale. Increase the Scale Type setting (e.g., to 7-note or 8-note) to unlock them.</p>
+
+    <p><strong>Q: Why are no chords being generated?</strong><br>
+    A: Check the 'Generate Mode' module. The plugin initializes to 'On-Demand' mode where you must click 'New Chord' to generate a chord. Switch the mode to 'Time-Interval' or 'Note-Count' for repeated or reactive chord generation.</p>
+
+    <p><strong>Q: I have Chord Kaleidoscope on an Ableton MIDI instrument track, and my playing won’t make any sound.</strong><br>
+    A: As a MIDI effect, Chord Kaleidoscope replaces your incoming MIDI with generated chords rather than passing it through to internal Ableton instruments. To hear both your live playing and the generated chords, use two tracks:<br>
+    - Track 1: Instrument only (plays your raw input).<br>
+    - Track 2: Instrument + Chord Kaleidoscope (plays the generated chords). Set Monitor to In (or Auto with the track armed).<br>
+    <em>Note: You can hear both your own playing and generated chords on the same track when routing to an external hardware instrument.</em></p>
+
+    <p><strong>Q: Why do I see scale tones (green) activated over inactive tracked notes (blue)?</strong><br>
+    A: This can happen for a few reasons:<br>
+    - <em>Lock Chords</em> may be active in the 'Chord Memory' module.<br>
+    - <em>Lock Scale</em> may be active.<br>
+    - Your scale type count (e.g., 6-note) may exceed the current amount of tracked notes, so scale tones are generated outside of the tracked notes set. This is by design! Explore the harmonic chaos of notes shifting continuously outside the current scale, or alternatively, play more notes to increase the tracked note set count.</p>
+
+    <p><strong>Q: How do I route MIDI from Chord Kaleidoscope to an instrument?</strong><br>
+    A: Create a second MIDI track with your chosen instrument. Set its 'MIDI From' dropdown to the track containing Chord Kaleidoscope, then set the monitor to <strong>In</strong>. This is standard practice for recording MIDI output of Ableton MIDI effects.</p>
+
+    <p><strong>Q: How do I get the last chord generated to stop without generating a new chord?</strong><br>
+    A: Simply deactivate the device to stop the chord. By design, Chord Kaleidoscope only sends MIDI note-off messages for the previous chord when the subsequent chord is generated.</p>
+
+    <p><strong>Q: I switched to 'Sync' mode, but no chords are generating.</strong><br>
+    A: Ableton's transport must be actively running for tempo synchronization to work.</p>
+
+    <h2>6. Support &amp; Feedback</h2>
+    <p>Please feel free to reach out with any thoughts, questions, concerns, or general feedback at:</p>
+    <p><strong>Hellojoywolf@gmail.com</strong></p>
+    <p>This is my first-ever software release, so bugs are probably inevitable. Rest assured, I will collect all feedback and apply important fixes and updates in future releases. I greatly appreciate you taking a chance with my product!</p>
+    </main>
+
+</body>
+</html>
