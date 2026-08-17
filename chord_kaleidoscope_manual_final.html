@@ -31,6 +31,39 @@
             background-color: #fafbfc;
         }
 
+        figure {
+            margin: 2em 0 2.25em 0;
+            padding: 0;
+            text-align: center;
+            page-break-inside: avoid;
+        }
+
+        figure + h3,
+        figure + h4 {
+            margin-top: 1.75em;
+        }
+
+        figure img {
+            display: block;
+            width: auto;
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            padding: 8px;
+            background-color: #ffffff;
+            border: 1px solid #e1e8ed;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+        }
+
+        figcaption {
+            margin: 9px auto 0 auto;
+            max-width: 90%;
+            font-size: 8.5pt;
+            line-height: 1.4;
+            color: #7f8c8d;
+            font-style: italic;
+        }
 
         header {
             margin: -25mm -20mm 20px -20mm;
@@ -217,6 +250,11 @@
     <h3>3.1 Harmonic Display &amp; Scale Detection</h3>
     <p>The main circular visualization displays the 12 chromatic pitches across three color-coded concentric rings.</p>
 
+    <figure>
+        <img src="CK_explained_1.png" alt="Chord Kaleidoscope Harmonic Display and Global Output Controls">
+        <figcaption>Figure 1. Harmonic Display &amp; Scale Detection and Global Output Controls</figcaption>
+    </figure>
+
     <table>
         <thead>
             <tr>
@@ -277,6 +315,11 @@
     <h3>3.2 Generate Modes</h3>
     <p>Chord Kaleidoscope features three operational trigger modes to control when new chords are produced.</p>
 
+    <figure>
+        <img src="CK_explained_2.png" alt="Chord Kaleidoscope Generate Modes">
+        <figcaption>Figure 2. Generate Modes</figcaption>
+    </figure>
+
     <ul>
         <li><strong>1. On-Demand Mode:</strong> New chords generate strictly when the 'New Chord' button is pressed.</li>
         <li><strong>2. Time-Interval Mode:</strong> Generates rapid-fire or rhythmically timed chords based on time intervals.
@@ -302,6 +345,11 @@
 
     <h3>3.3 Chord Shapes &amp; Chord Voicings</h3>
     <p>Once a Scale is defined, Chord Kaleidoscope applies structural rules using Chord Shapes and Chord Voicings to select and arrange final output notes.</p>
+
+    <figure>
+        <img src="CK_explained_3.png" alt="Chord Kaleidoscope Chord Shapes, Voicings, and Chord Memory">
+        <figcaption>Figure 3. Chord Shapes, Chord Voicings, and Chord Memory</figcaption>
+    </figure>
 
     <h4>Chord Shapes Matrix</h4>
     <p>During each generation cycle, the device randomly picks one active property from the Chord Shapes matrix:</p>
