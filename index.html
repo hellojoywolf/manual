@@ -1,20 +1,13 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Chord Kaleidoscope User Manual</title>
     <style>
+        /* Remove page margins to allow edge-to-edge background colors */
         @page {
             size: A4;
-            margin: 25mm 20mm;
-            background-color: #fafbfc;
-            @bottom-right {
-                content: counter(page);
-                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-                font-size: 9pt;
-                color: #888;
-            }
+            margin: 0;
         }
         
         *, *::before, *::after {
@@ -29,6 +22,120 @@
             margin: 0;
             padding: 0;
             background-color: #fafbfc;
+        }
+
+        /* Full-bleed header */
+        header {
+            background-color: #2c3e50;
+            color: #ffffff;
+            /* Top padding simulates the original page margin */
+            padding: 25mm 20mm 15mm 20mm;
+            border-bottom: 4px solid #3498db;
+        }
+
+        header h1 {
+            font-size: 26pt;
+            font-weight: 300;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            font-size: 12pt;
+            color: #bdc3c7;
+            margin-top: 8px;
+            font-weight: 400;
+        }
+
+        /* Main document container replaces the removed page margins */
+        .document-content {
+            padding: 10mm 20mm 25mm 20mm;
+            width: 100%;
+        }
+
+        /* Table of Contents Styling */
+        .toc-container {
+            background-color: #ffffff;
+            border: 1px solid #e1e8ed;
+            border-radius: 4px;
+            padding: 20px;
+            margin-bottom: 2em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            page-break-after: always; /* Forces content to start on page 2 */
+        }
+        
+        .toc-container h2 {
+            margin-top: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .toc-list li {
+            margin-bottom: 8px;
+        }
+
+        .toc-list a {
+            text-decoration: none;
+            color: #3498db;
+            font-weight: 500;
+        }
+
+        .toc-list a:hover {
+            text-decoration: underline;
+        }
+
+        .toc-sublist {
+            list-style: none;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+
+        .toc-sublist a {
+            color: #7f8c8d;
+            font-weight: 400;
+        }
+
+        h2 {
+            font-size: 16pt;
+            color: #2c3e50;
+            margin-top: 2em;
+            padding-bottom: 4px;
+            border-bottom: 1px solid #dcdde1;
+            page-break-after: avoid;
+            font-weight: 600;
+        }
+
+        h3 {
+            font-size: 12pt;
+            color: #34495e;
+            margin-top: 1.5em;
+            page-break-after: avoid;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 10.5pt;
+            color: #34495e;
+            margin-top: 1.2em;
+            page-break-after: avoid;
+        }
+
+        p {
+            margin: 0.8em 0;
+        }
+
+        ul, ol {
+            margin: 0.8em 0;
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 0.4em;
         }
 
         figure {
@@ -63,65 +170,6 @@
             line-height: 1.4;
             color: #7f8c8d;
             font-style: italic;
-        }
-
-        header {
-            margin: -25mm -20mm 20px -20mm;
-            padding: 30mm 32mm 15mm 32mm;
-            background-color: #2c3e50;
-            color: #ffffff;
-            border-bottom: 4px solid #3498db;
-        }
-
-        .document-content {
-            padding-left: 12mm;
-            padding-right: 12mm;
-            width: 100%;
-        }
-
-        h1 {
-            font-size: 26pt;
-            font-weight: 300;
-            margin: 0;
-            letter-spacing: 1px;
-        }
-
-        .subtitle {
-            font-size: 12pt;
-            color: #bdc3c7;
-            margin-top: 8px;
-            font-weight: 400;
-        }
-
-        h2 {
-            font-size: 16pt;
-            color: #2c3e50;
-            margin-top: 2em;
-            padding-bottom: 4px;
-            border-bottom: 1px solid #dcdde1;
-            page-break-after: avoid;
-            font-weight: 600;
-        }
-
-        h3 {
-            font-size: 12pt;
-            color: #34495e;
-            margin-top: 1.5em;
-            page-break-after: avoid;
-            font-weight: 600;
-        }
-
-        p {
-            margin: 0.8em 0;
-        }
-
-        ul, ol {
-            margin: 0.8em 0;
-            padding-left: 25px;
-        }
-
-        li {
-            margin-bottom: 0.4em;
         }
 
         table {
@@ -213,11 +261,43 @@
     </header>
 
     <main class="document-content">
-    <h2>1. Overview &amp; Core Concept</h2>
+        
+    <div class="toc-container">
+        <h2>Table of Contents</h2>
+        <ul class="toc-list">
+            <li><a href="#section-1">1. Overview &amp; Core Concept</a></li>
+            <li><a href="#section-2">2. Installation &amp; Routing</a></li>
+            <li>
+                <a href="#section-3">3. Interface Reference</a>
+                <ul class="toc-sublist">
+                    <li><a href="#section-3-1">3.1 Harmonic Display &amp; Scale Detection</a></li>
+                    <li><a href="#section-3-2">3.2 Generate Modes</a></li>
+                    <li><a href="#section-3-3">3.3 Chord Shapes &amp; Chord Voicings</a></li>
+                    <li><a href="#section-3-4">3.4 Chord Memory</a></li>
+                    <li><a href="#section-3-5">3.5 Global Output Controls</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#section-4">4. How Chord Generation Works</a>
+                <ul class="toc-sublist">
+                    <li><a href="#section-4-1">4.1 Root Selection</a></li>
+                    <li><a href="#section-4-2">4.2 Chord Shape Selection</a></li>
+                    <li><a href="#section-4-3">4.3 Scale-Degree Patterns</a></li>
+                    <li><a href="#section-4-4">4.4 Chord Voicing</a></li>
+                    <li><a href="#section-4-5">4.5 Final Output</a></li>
+                    <li><a href="#section-4-6">4.6 Example: Complete Chord Generation</a></li>
+                </ul>
+            </li>
+            <li><a href="#section-5">5. Troubleshooting &amp; FAQ</a></li>
+            <li><a href="#section-6">6. Support &amp; Feedback</a></li>
+        </ul>
+    </div>
+
+    <h2 id="section-1">1. Overview &amp; Core Concept</h2>
     <p><strong>Chord Kaleidoscope</strong> is a generative harmony instrument for Ableton Live that transforms melodic input into dynamic, real-time harmonic accompaniment through intelligent scale tracking and adaptive chord generation.</p>
     <p>At high speeds, its adaptive chord-generation capabilities can also be used to create unique sound textures and rapid-fire melodies when applied to monophonic instruments.</p>
 
-    <h2>2. Installation &amp; Routing</h2>
+    <h2 id="section-2">2. Installation &amp; Routing</h2>
     
     <h3>Installation</h3>
     <p>Drag the <code>Chord Kaleidoscope.amxd</code> file into:<br>
@@ -244,10 +324,10 @@
         <li>Arm Track 2 and press Record.</li>
     </ol>
 
-    <h2>3. Interface Reference</h2>
+    <h2 id="section-3">3. Interface Reference</h2>
     <p>The interface is structured into five functional zones: <em>Harmonic Display &amp; Scale Tracking, Generate Modes, Chord Shapes &amp; Voicings, Chord Memory,</em> and <em>Global Output Controls.</em></p>
 
-    <h3>3.1 Harmonic Display &amp; Scale Detection</h3>
+    <h3 id="section-3-1">3.1 Harmonic Display &amp; Scale Detection</h3>
     <p>The main circular visualization displays the 12 chromatic pitches across three color-coded concentric rings.</p>
 
     <figure>
@@ -312,7 +392,7 @@
         </tbody>
     </table>
 
-    <h3>3.2 Generate Modes</h3>
+    <h3 id="section-3-2">3.2 Generate Modes</h3>
     <p>Chord Kaleidoscope features three operational trigger modes to control when new chords are produced.</p>
 
     <figure>
@@ -343,7 +423,7 @@
         </li>
     </ul>
 
-    <h3>3.3 Chord Shapes &amp; Chord Voicings</h3>
+    <h3 id="section-3-3">3.3 Chord Shapes &amp; Chord Voicings</h3>
     <p>Once a Scale is defined, Chord Kaleidoscope applies structural rules using Chord Shapes and Chord Voicings to select and arrange final output notes.</p>
 
     <figure>
@@ -386,7 +466,7 @@
         <li><strong>Drop Voicings (Right Side):</strong> No Drop, Drop 2, Drop 3</li>
     </ul>
 
-    <h3>3.4 Chord Memory</h3>
+    <h3 id="section-3-4">3.4 Chord Memory</h3>
     <p>View the last 5 chords generated, or enable 'Lock Chords' to jam out with them.</p>
     <ul>
         <li><strong>History Tracking:</strong> Automatically stores the last 5 generated chords when Lock Chords is set to Off.</li>
@@ -395,26 +475,26 @@
         <li><strong>Add Spread Checkbox:</strong> When enabled, applies active Chord Voicings (inversions/drop rules) to stored chords when re-triggered from memory slots.</li>
     </ul>
 
-    <h3>3.5 Global Output Controls</h3>
+    <h3 id="section-3-5">3.5 Global Output Controls</h3>
     <ul>
         <li><strong>Chord Velocity:</strong> Sets uniform MIDI velocity output (range: 1&ndash;127) for every note of a generated chord.</li>
         <li><strong>Octave Adjust (-2, -1, 0, 1, 2):</strong> Transposes output pitch up or down by octaves relative to the center pitch.</li>
         <li><strong>Octave Range (1 / 2):</strong> Selects whether generated chords remain strictly in the selected 'Octave Adjust' boundary (1), or whether they also have the chance of alternatively being placed in the octave boundary directly above (2).</li>
     </ul>
 
-    <h2>4. How Chord Generation Works</h2>
+    <h2 id="section-4">4. How Chord Generation Works</h2>
     <p>Chord Kaleidoscope generates each chord through a sequence of four stages: Root Selection, Chord Shape Selection, Chord Voicing, and Output Adjustment.</p>
 
     <div class="chord-flow">
         Current Scale &rarr; Random Root Selection &rarr; Chord Shape Selection &rarr; Chord Voicing &rarr; Output Controls &rarr; Final MIDI Chord
     </div>
 
-    <h3>4.1 Root Selection</h3>
+    <h3 id="section-4-1">4.1 Root Selection</h3>
     <p>When a new chord is generated, Chord Kaleidoscope first selects a random scale degree from the currently active Scale. This note becomes the root of the generated chord.</p>
     <p>For example, if the current Scale is C Major (<span class="math">C D E F G A B</span>) and <strong>E</strong> is randomly selected as the root, all subsequent Chord Shape calculations begin from E.</p>
     <p>The selected root does not necessarily determine the final lowest note of the chord. Chord Voicings and Output Controls are applied later and may move individual notes into different octaves.</p>
 
-    <h3>4.2 Chord Shape Selection</h3>
+    <h3 id="section-4-2">4.2 Chord Shape Selection</h3>
     <p>After selecting a root, the device randomly selects one active Chord Shape from the matrix.</p>
     <p>Chord Shapes determine which scale degrees are included relative to the root. They do not use fixed semitone intervals. Instead, they move through the notes of the current Scale.</p>
     
@@ -436,7 +516,7 @@ Result:          <strong>D &ndash; F &ndash; A</strong></div>
 
     <p>This means that the same Chord Shape can produce different harmonic structures depending on the selected Scale and Root.</p>
 
-    <h3>4.3 Scale-Degree Patterns</h3>
+    <h3 id="section-4-3">4.3 Scale-Degree Patterns</h3>
     <p>Each Chord Shape has its own scale-degree pattern. The following table describes the patterns used by Chord Kaleidoscope.</p>
 
     <table>
@@ -463,7 +543,7 @@ Result:          <strong>D &ndash; F &ndash; A</strong></div>
     </table>
     <p>For example, the Triad + 2 shape uses the pattern <span class="math">1 &ndash; 2 &ndash; 3 &ndash; 5</span>. Starting from C in C Major produces <span class="math">C &ndash; D &ndash; E &ndash; G</span>. Starting from E produces <span class="math">E &ndash; F &ndash; G &ndash; B</span>.</p>
 
-    <h3>4.4 Chord Voicing</h3>
+    <h3 id="section-4-4">4.4 Chord Voicing</h3>
     <p>After the Chord Shape determines which notes belong to the chord, active Chord Voicing rules are applied. Chord Voicings change the octave placement of the notes without altering the selected scale degrees.</p>
 
     <table>
@@ -546,10 +626,10 @@ Root Position: C &ndash; E &ndash; G (no shift)
 
     <p><strong>Drop Voicings</strong> lower specific notes by one octave after the chord shape and inversion have been determined. For example, a three-note chord using Drop 2 changes from <span class="math">C &ndash; E &ndash; G</span> to <span class="math">C &ndash; E' &ndash; G</span>, where the designated note is moved down one octave relative to the other tones.</p>
 
-    <h3>4.5 Final Output</h3>
+    <h3 id="section-4-5">4.5 Final Output</h3>
     <p>After Root Selection, Chord Shape, and Chord Voicing have been applied, the generated notes are passed through the Global Output Controls (Chord Velocity, Octave Range, and Octave Adjust) before being sent as final MIDI.</p>
 
-    <h3>4.6 Example: Complete Chord Generation</h3>
+    <h3 id="section-4-6">4.6 Example: Complete Chord Generation</h3>
     <p>Suppose the current Scale is <strong>C Major</strong> (<code>C &ndash; D &ndash; E &ndash; F &ndash; G &ndash; A &ndash; B</code>):</p>
 
     <ol>
@@ -565,7 +645,7 @@ Root Position: C &ndash; E &ndash; G (no shift)
     <p>The resulting notes are passed through the Global Output Controls before being output as MIDI. By separating harmonic content (Chord Shapes) from physical arrangement (Chord Voicings), the device
     ensures that while the specific octaves and inversions may vary, the underlying harmonic structure remains logically tied to your active scale and selected parameters.</p>
 
-    <h2>5. Troubleshooting &amp; FAQ</h2>
+    <h2 id="section-5">5. Troubleshooting &amp; FAQ</h2>
     
     <p><strong>Q: Why are some Chord Shapes grayed out or unselectable?</strong><br>
     A: Certain 3-note or 4-note Chord Shapes require a higher note count in the selected scale. Increase the Scale Type setting (e.g., to 7-note or 8-note) to unlock them.</p>
@@ -594,7 +674,7 @@ Root Position: C &ndash; E &ndash; G (no shift)
     <p><strong>Q: I switched to 'Sync' mode, but no chords are generating.</strong><br>
     A: Ableton's transport must be actively running for tempo synchronization to work.</p>
 
-    <h2>6. Support &amp; Feedback</h2>
+    <h2 id="section-6">6. Support &amp; Feedback</h2>
     <p>Please feel free to reach out with any thoughts, questions, concerns, or general feedback at:</p>
     <p><strong>Hellojoywolf@gmail.com</strong></p>
     <p>This is my first-ever software release, so bugs are probably inevitable. Rest assured, I will collect all feedback and apply important fixes and updates in future releases. I greatly appreciate you taking a chance with my product!</p>
